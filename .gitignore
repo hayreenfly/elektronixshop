@@ -8,6 +8,8 @@ node_modules/
 
 # testing
 /coverage
+backend/data
+backend/seeder.js
 
 # production
 /build
