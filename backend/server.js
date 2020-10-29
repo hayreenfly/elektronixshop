@@ -7,12 +7,16 @@ import connectDB from './config/db.js';
 
 // Import Routes
 import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 dotenv.config();
 
 connectDB();
 
 const app = express();
+
+//middleware that parses incoming requests with JSON payload
+app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
@@ -22,6 +26,7 @@ app.get('/', (req, res) => {
 
 //Connect routes
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
 
 // Custom Middlewares
 app.use(notFound);
