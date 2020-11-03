@@ -70,7 +70,7 @@ const orderSchema = mongoose.Schema(
     },
   },
   {
-    timestaps: true,
+    timestamps: true,
   }
 );
 
