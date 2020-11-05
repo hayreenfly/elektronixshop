@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
+import morgan from 'morgan';
 import colors from 'colors'; // just helps to highlight the console for important things
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
 
@@ -17,6 +18,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 //middleware that parses incoming requests with JSON payload
 app.use(express.json());
