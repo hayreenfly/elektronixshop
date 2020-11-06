@@ -11,6 +11,7 @@ import {
   payOrder,
   deliverOrder,
 } from '../actions/orderActions';
+import { resetCart } from '../actions/cartActions';
 import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
@@ -70,6 +71,7 @@ const OrderScreen = ({ match, history }) => {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(getOrderDetails(orderId));
+      dispatch(resetCart());
     } else if (!order.isPaid) {
       if (!window.paypal) {
         addPayPalScript();
