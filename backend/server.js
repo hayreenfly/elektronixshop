@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import colors from 'colors'; // just helps to highlight the console for important things
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
 
-const connectDB = require('../backend/config/db');
+import connectDB from './config/db.js';
 
 // Import Routes
 import productRoutes from './routes/productRoutes.js';
