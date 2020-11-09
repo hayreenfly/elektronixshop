@@ -10,6 +10,7 @@ import {
   getOrderDetails,
   payOrder,
   deliverOrder,
+  listMyOrders,
 } from '../actions/orderActions';
 import { resetCart } from '../actions/cartActions';
 import {
@@ -67,11 +68,13 @@ const OrderScreen = ({ match, history }) => {
 
       document.body.appendChild(script);
     };
-    if (!order || successPay || successDeliver) {
+
+    if (!order || successPay || successDeliver || order._id !== orderId) {
+      dispatch(listMyOrders());
+      dispatch(resetCart());
       dispatch({ type: ORDER_PAY_RESET });
       dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(getOrderDetails(orderId));
-      dispatch(resetCart());
     } else if (!order.isPaid) {
       if (!window.paypal) {
         addPayPalScript();

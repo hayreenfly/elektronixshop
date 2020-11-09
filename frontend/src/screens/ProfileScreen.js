@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 import { Table, Form, Button, Row, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -134,18 +135,18 @@ const ProfileScreen = ({ location, history }) => {
               {orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order._id}</td>
-                  <td>{order.createdAt}</td>
+                  <td>{moment(order.createdAt).format('MM/DD/YYYY')}</td>
                   <td>{order.totalPrice}</td>
                   <td>
                     {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
+                      moment(order.paidAt).format('MM/DD/YYYY')
                     ) : (
                       <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}
                   </td>
                   <td className='text-center'>
                     {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
+                      moment(order.deliveredAt).format('MM/DD/YYYY')
                     ) : (
                       <i className='fas fa-times' style={{ color: 'red' }}></i>
                     )}

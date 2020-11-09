@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -163,7 +164,7 @@ const ProductScreen = ({ history, match }) => {
                   <ListGroup.Item key={review._id}>
                     <strong>{review.name}</strong>
                     <Rating value={review.rating} />
-                    <p>{review.createdAt} NOT EXECUTING</p>
+                    <p>{moment(review.createdAt).format('MM/DD/YYYY')}</p>
                     <p>{review.comment}</p>
                   </ListGroup.Item>
                 ))}

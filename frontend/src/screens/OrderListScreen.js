@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import moment from 'moment';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -48,18 +49,18 @@ const OrderListScreen = ({ history, match }) => {
               <tr key={order._id}>
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
-                <td>{order.createdAt.substring(0, 10)}</td>
+                <td>{moment(order.createdAt).format('MM/DD/YYYY')}</td>
                 <td>${order.totalPrice}</td>
                 <td>
                   {order.isPaid ? (
-                    order.paidAt.substring(0, 10)
+                    moment(order.paidAt).format('MM/DD/YYYY')
                   ) : (
                     <i className='fas fa-times' style={{ color: 'red' }}></i>
                   )}
                 </td>
                 <td className='text-center'>
                   {order.isDelivered ? (
-                    order.deliveredAt.substring(0, 10)
+                    moment(order.deliveredAt).format('MM/DD/YYYY')
                   ) : (
                     <i className='fas fa-times' style={{ color: 'red' }}></i>
                   )}

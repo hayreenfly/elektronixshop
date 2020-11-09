@@ -31,12 +31,16 @@ export const removeFromCart = (id) => (dispatch, getState) => {
 };
 
 export const resetCart = () => (dispatch) => {
-  localStorage.removeItem('cartItems');
   dispatch({ type: CART_CLEAR_ITEMS });
+  localStorage.removeItem('cartItems');
 };
 
 export const saveShippingAddress = (data) => (dispatch) => {
-  dispatch({ type: CART_SAVE_SHIPPING_ADDRESS, payload: data });
+  dispatch({
+    type: CART_SAVE_SHIPPING_ADDRESS,
+    payload: data,
+  });
+
   localStorage.setItem('shippingAddress', JSON.stringify(data));
 };
 
